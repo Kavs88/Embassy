@@ -129,19 +129,27 @@
         <a href="contact.html" class="text-white hover:text-secondary transition">Contact</a>
         <a href="#reservations" class="btn-primary px-6 py-2 rounded-full text-sm font-semibold">Reserve</a>
       </div>
-      <button class="md:hidden text-2xl" id="menu-toggle">
-        <i class="fas fa-bars"></i>
-      </button>
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center space-x-4">
+        <a href="#reservations" class="bg-secondary hover:bg-yellow-600 text-black font-semibold px-4 py-2 rounded-full text-sm whitespace-nowrap">
+          Reserve
+        </a>
+        <button id="menu-toggle" class="text-white hover:text-secondary focus:outline-none">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
     </div>
+    
     <!-- Mobile menu -->
-    <div class="md:hidden hidden bg-dark" id="mobile-menu">
-      <div class="px-4 py-3 space-y-3">
-        <a href="index.html" class="block py-2 text-secondary font-medium">Home</a>
-        <a href="menu.html" class="block py-2 text-white hover:text-secondary transition">Menu</a>
-        <a href="events.html" class="block py-2 text-white hover:text-secondary transition">Events</a>
-        <a href="gallery.html" class="block py-2 text-white hover:text-secondary transition">Gallery</a>
-        <a href="contact.html" class="block py-2 text-white hover:text-secondary transition">Contact</a>
-        <a href="#reservations" class="btn-primary block text-center py-2 rounded-full font-semibold mt-4">Reserve a Table</a>
+    <div id="mobile-menu" class="md:hidden hidden bg-primary">
+      <div class="px-2 pt-2 pb-4 space-y-1">
+        <a href="index.html" class="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">Home</a>
+        <a href="menu.html" class="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">Menu</a>
+        <a href="events.html" class="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">Events</a>
+        <a href="gallery.html" class="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">Gallery</a>
+        <a href="contact.html" class="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">Contact</a>
       </div>
     </div>
   </nav>
