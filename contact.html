@@ -17,16 +17,35 @@
             primary: '#0a0a0a',
             secondary: '#b8860b',
             dark: '#121212',
+            light: '#f8f9fa',
           },
           fontFamily: {
             sans: ['Montserrat', 'sans-serif'],
             serif: ['Playfair Display', 'serif'],
           },
         }
-      }
+      },
+      variants: {
+        extend: {
+          backgroundColor: ['responsive', 'hover', 'focus', 'active'],
+          textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+          borderColor: ['responsive', 'hover', 'focus'],
+        },
+      },
+      plugins: [],
     }
   </script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6, .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+    
     .btn-contact {
       transition: all 0.3s ease;
       min-width: 200px;
@@ -34,6 +53,7 @@
       overflow: hidden;
       z-index: 1;
     }
+    
     .btn-contact:after {
       content: '';
       position: absolute;
@@ -44,6 +64,7 @@
       background-color: inherit;
       z-index: -2;
     }
+    
     .btn-contact:before {
       content: '';
       position: absolute;
@@ -55,36 +76,22 @@
       transition: all 0.3s ease;
       z-index: -1;
     }
+    
     .btn-contact:hover:before {
       width: 100%;
     }
-    .btn-contact-email {
-      background-color: #b8860b;
-    }
-    .btn-contact-email:hover {
-      background-color: #a67c10;
-    }
-    .btn-contact-whatsapp {
-      background-color: #25D366;
-    }
-    .btn-contact-whatsapp:hover {
-      background-color: #1fbb5a;
-    }
-    .btn-contact-zalo {
-      background-color: #0068FF;
-    }
-    .btn-contact-zalo:hover {
-      background-color: #0057d9;
-    }
+    
     .contact-card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       overflow: hidden;
     }
+    
     .contact-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
+    
     .contact-card:before {
       content: '';
       position: absolute;
@@ -94,254 +101,307 @@
       height: 4px;
       background: linear-gradient(90deg, #b8860b, #e6b800);
     }
+    
+    /* Ensure all Tailwind utilities are available */
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
-  <!-- Header -->
-  <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-serif font-bold text-primary">Embassy Irish Bar</a>
-      <nav class="hidden md:flex space-x-8 items-center">
+<body class="bg-light">
+  <!-- Navigation -->
+  <nav class="bg-primary text-white shadow-lg fixed w-full z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <a href="index.html" class="flex items-center">
+          <img src="assets/logo.png" alt="Embassy Irish Bar & Grill" class="h-12">
+          <span class="ml-3 text-xl font-semibold">Embassy Irish Bar</span>
+        </a>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
         <a href="index.html" class="hover:text-secondary transition">Home</a>
         <a href="menu.html" class="hover:text-secondary transition">Menu</a>
         <a href="events.html" class="hover:text-secondary transition">Events</a>
         <a href="gallery.html" class="hover:text-secondary transition">Gallery</a>
         <a href="contact.html" class="text-secondary font-semibold">Contact</a>
-        <a href="#contact" class="ml-4 bg-secondary hover:bg-yellow-700 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-md">
-          Contact Us
+        <a href="#reservations" class="ml-4 bg-secondary hover:bg-yellow-600 text-black font-semibold px-6 py-2 rounded-full transition">
+          Reserve
         </a>
-      </nav>
-      <button id="mobile-menu-button" class="md:hidden text-gray-700">
-        <i class="ri-menu-line text-2xl"></i>
-      </button>
-    </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200 px-4 py-3">
-      <a href="index.html" class="block py-2 hover:text-secondary">Home</a>
-      <a href="menu.html" class="block py-2 hover:text-secondary">Menu</a>
-      <a href="events.html" class="block py-2 hover:text-secondary">Events</a>
-      <a href="gallery.html" class="block py-2 hover:text-secondary">Gallery</a>
-      <a href="contact.html" class="block py-2 text-secondary font-semibold">Contact</a>
-      <a href="#contact" class="mt-2 block w-full text-center bg-secondary hover:bg-yellow-700 text-white px-6 py-2 rounded-full font-medium transition-all duration-300">
-        Contact Us
-      </a>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="relative bg-cover bg-center py-32 px-4" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
-    <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/70"></div>
-    <div class="container mx-auto text-center relative z-10">
-      <h1 class="text-4xl md:text-6xl font-serif font-bold mb-4 text-white">Get In Touch</h1>
-      <p class="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">We'd love to hear from you. Reach out to us through any of the channels below.</p>
-      <div class="flex flex-wrap justify-center gap-4 mt-8">
-        <a href="#contact-info" class="px-6 py-3 bg-secondary hover:bg-yellow-700 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105">
-          Contact Information
-        </a>
-        <a href="#map" class="px-6 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-full font-medium backdrop-blur-sm transition-all duration-300 hover:scale-105">
-          View on Map
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Buttons -->
-  <section id="contact" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6 text-center">
-      <div class="max-w-2xl mx-auto mb-12">
-        <span class="text-secondary font-medium mb-2 block">CONTACT US</span>
-        <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">How Can We Help You?</h2>
-        <p class="text-gray-600">We're here to answer any questions you may have about our bar, events, or services. Reach out to us and we'll respond as soon as we can.</p>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-        <div class="bg-white p-8 rounded-xl shadow-lg contact-card">
-          <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
-            <i class="ri-phone-line text-3xl text-secondary"></i>
-          </div>
-          <h3 class="text-xl font-semibold mb-3">Call Us</h3>
-          <p class="text-gray-600 mb-4">Speak directly with our friendly staff</p>
-          <a href="tel:+84386435947" class="text-secondary font-medium hover:underline">038 643 5947</a>
-        </div>
-        
-        <div class="bg-white p-8 rounded-xl shadow-lg contact-card">
-          <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
-            <i class="ri-whatsapp-line text-3xl text-secondary"></i>
-          </div>
-          <h3 class="text-xl font-semibold mb-3">WhatsApp</h3>
-          <p class="text-gray-600 mb-4">Chat with us on WhatsApp</p>
-          <a href="https://wa.me/84386435947" class="text-secondary font-medium hover:underline">Message Us</a>
-        </div>
-        
-        <div class="bg-white p-8 rounded-xl shadow-lg contact-card">
-          <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
-            <i class="ri-mail-line text-3xl text-secondary"></i>
-          </div>
-          <h3 class="text-xl font-semibold mb-3">Email Us</h3>
-          <p class="text-gray-600 mb-4">We'll get back to you within 24 hours</p>
-          <a href="mailto:info@embassyirishbar.com" class="text-secondary font-medium hover:underline">info@embassyirishbar.com</a>
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-white hover:text-secondary focus:outline-none">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-primary">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="index.html" class="block px-3 py-2 hover:bg-gray-800 rounded-md">Home</a>
+        <a href="menu.html" class="block px-3 py-2 hover:bg-gray-800 rounded-md">Menu</a>
+        <a href="events.html" class="block px-3 py-2 hover:bg-gray-800 rounded-md">Events</a>
+        <a href="gallery.html" class="block px-3 py-2 hover:bg-gray-800 rounded-md">Gallery</a>
+        <a href="contact.html" class="block px-3 py-2 bg-gray-800 text-white rounded-md">Contact</a>
+        <a href="#reservations" class="block px-3 py-2 mt-4 bg-secondary text-black font-semibold rounded-full text-center">
+          Make a Reservation
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with padding for fixed header -->
+  <div class="pt-20">
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center py-32 px-4" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/70"></div>
+      <div class="container mx-auto text-center relative z-10">
+        <h1 class="text-4xl md:text-6xl font-serif font-bold mb-4 text-white">Get In Touch</h1>
+        <p class="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">We'd love to hear from you. Reach out to us through any of the channels below.</p>
+        <div class="flex flex-wrap justify-center gap-4 mt-8">
+          <a href="#contact-info" class="px-6 py-3 bg-secondary hover:bg-yellow-700 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105">
+            Contact Information
+          </a>
+          <a href="#map" class="px-6 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-full font-medium backdrop-blur-sm transition-all duration-300 hover:scale-105">
+            View on Map
+          </a>
         </div>
       </div>
-      
-      <!-- Contact Info & Map -->
-      <div id="contact-info" class="container mx-auto grid md:grid-cols-2 gap-12 items-start">
-        <!-- Contact Info -->
-        <div class="bg-white p-10 rounded-2xl shadow-xl contact-card">
-          <h3 class="text-2xl font-serif font-bold mb-8 pb-4 border-b border-gray-100">Visit Us</h3>
+    </section>
+
+    <!-- Contact Buttons -->
+    <section id="contact" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6 text-center">
+        <div class="max-w-2xl mx-auto mb-12">
+          <span class="text-secondary font-medium mb-2 block">CONTACT US</span>
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">How Can We Help You?</h2>
+          <p class="text-gray-600">We're here to answer any questions you may have about our bar, events, or services. Reach out to us and we'll respond as soon as we can.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mb-16">
+          <!-- Phone -->
+          <div class="bg-white p-8 rounded-xl shadow-lg contact-card">
+            <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+              <i class="ri-phone-line text-3xl text-secondary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Call Us</h3>
+            <p class="text-gray-600 mb-4">Speak directly with our friendly staff</p>
+            <a href="tel:+84386435947" class="text-secondary font-medium hover:underline">038 643 5947</a>
+          </div>
           
-          <div class="space-y-8">
-            <div class="flex items-start">
-              <div class="bg-secondary/10 p-3 rounded-full mr-4 flex-shrink-0">
-                <i class="ri-map-pin-2-line text-secondary text-xl"></i>
+          <!-- WhatsApp -->
+          <div class="bg-white p-8 rounded-xl shadow-lg contact-card border-2 border-[#25D366] hover:border-[#128C7E] transition-all">
+            <div class="w-16 h-16 bg-[#25D366]/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+              <i class="ri-whatsapp-line text-3xl text-[#25D366]"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">WhatsApp</h3>
+            <p class="text-gray-600 mb-4">Chat with us instantly</p>
+            <a href="https://wa.me/84386435947" target="_blank" class="inline-block px-6 py-2 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full font-medium transition-all">
+              Message Us
+            </a>
+          </div>
+          
+          <!-- Zalo -->
+          <div class="bg-white p-8 rounded-xl shadow-lg contact-card border-2 border-[#0068FF] hover:border-[#0052CC] transition-all">
+            <div class="w-16 h-16 bg-[#0068FF]/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 5.93 2 10.8C2 13.15 3.18 15.28 5.04 16.7L4.8 19.5L7.89 18.25C8.96 18.65 10.15 18.9 11.4 18.9C16.92 18.9 21.4 14.97 21.4 10.1C21.4 5.23 16.92 2 12 2Z" fill="#0068FF"/>
+                <path d="M12.17 16.86H11.7C10.47 16.86 9.29 16.59 8.25 16.09L7.95 15.94L6.5 16.52L6.75 15.02L6.59 14.71C5.69 13.13 5.24 11.28 5.25 9.35C5.25 6.15 8.23 3.54 12 3.54C15.77 3.54 18.75 6.15 18.75 9.35C18.75 12.55 15.93 15.16 12.17 15.16V16.86Z" fill="white"/>
+                <path d="M15.5 10.5C15.22 10.5 15 10.28 15 10C15 9.72 15.22 9.5 15.5 9.5C15.78 9.5 16 9.72 16 10C16 10.28 15.78 10.5 15.5 10.5Z" fill="#0068FF"/>
+                <path d="M12.5 10.5C12.22 10.5 12 10.28 12 10C12 9.72 12.22 9.5 12.5 9.5C12.78 9.5 13 9.72 13 10C13 10.28 12.78 10.5 12.5 10.5Z" fill="#0068FF"/>
+                <path d="M9.5 10.5C9.22 10.5 9 10.28 9 10C9 9.72 9.22 9.5 9.5 9.5C9.78 9.5 10 9.72 10 10C10 10.28 9.78 10.5 9.5 10.5Z" fill="#0068FF"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Zalo Us</h3>
+            <p class="text-gray-600 mb-4">Chat with us on Zalo</p>
+            <a href="https://zalo.me/0386435947" class="inline-block px-6 py-2 bg-[#0068FF] hover:bg-[#0052CC] text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105">
+              Message on Zalo
+            </a>
+          </div>
+          
+          <!-- Email -->
+          <div class="bg-white p-8 rounded-xl shadow-lg contact-card">
+            <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+              <i class="ri-mail-line text-3xl text-secondary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Email Us</h3>
+            <p class="text-gray-600 mb-4">We'll get back to you soon</p>
+            <a href="mailto:info@embassyirishbar.com" class="text-secondary font-medium hover:underline">info@embassyirishbar.com</a>
+          </div>
+        </div>
+        
+        <!-- Contact Info & Map -->
+        <div id="contact-info" class="container mx-auto grid md:grid-cols-2 gap-12 items-start">
+          <!-- Contact Info -->
+          <div class="bg-white p-10 rounded-2xl shadow-xl contact-card">
+            <h3 class="text-2xl font-serif font-bold mb-8 pb-4 border-b border-gray-100">Visit Us</h3>
+            
+            <div class="space-y-10">
+              <!-- Location -->
+              <div class="flex items-start">
+                <div class="bg-secondary/10 p-3 rounded-full mr-5 flex-shrink-0 mt-1">
+                  <i class="ri-map-pin-2-line text-xl text-secondary"></i>
+                </div>
+                <div class="w-full">
+                  <h4 class="font-semibold text-xl mb-3 text-gray-800">Location</h4>
+                  <div class="space-y-4">
+                    <p class="text-gray-600 leading-relaxed">
+                      93 Hoang Ke Viem<br>
+                      Son Tra District, Da Nang, Vietnam
+                    </p>
+                    <div class="mt-2 rounded-lg overflow-hidden border border-gray-100">
+                      <img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                           alt="Embassy Irish Bar exterior" 
+                           class="w-full h-48 object-cover">
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h4 class="font-semibold text-lg mb-2">Location</h4>
-                <p class="text-gray-600">93 Hoang Ke Viem, Son Tra District<br>Da Nang, Vietnam</p>
-                <div class="mt-4 rounded-lg overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
-                       alt="Embassy Irish Bar exterior" 
+              
+              <!-- Opening Hours -->
+              <div class="flex items-start">
+                <div class="bg-secondary/10 p-3 rounded-full mr-5 flex-shrink-0 mt-1">
+                  <i class="ri-time-line text-xl text-secondary"></i>
+                </div>
+                <div class="w-full">
+                  <h4 class="font-semibold text-xl mb-3 text-gray-800">Opening Hours</h4>
+                  <div class="space-y-3">
+                    <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                      <span class="text-gray-700">Monday - Thursday</span>
+                      <span class="font-medium">4:00 PM - 12:00 AM</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                      <span class="text-gray-700">Friday - Saturday</span>
+                      <span class="font-medium">12:00 PM - 2:00 AM</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2">
+                      <span class="text-gray-700">Sunday</span>
+                      <span class="font-medium">12:00 PM - 10:00 PM</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="pt-4">
+                <h4 class="font-semibold text-lg mb-4">Follow Us</h4>
+                <div class="flex space-x-4">
+                  <a href="#" class="w-12 h-12 rounded-full bg-gray-100 hover:bg-[#1877F2] hover:text-white flex items-center justify-center text-gray-700 hover:shadow-lg transition-all duration-300">
+                    <i class="ri-facebook-fill text-xl"></i>
+                  </a>
+                  <a href="#" class="w-12 h-12 rounded-full bg-gray-100 hover:bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] hover:text-white flex items-center justify-center text-gray-700 hover:shadow-lg transition-all duration-300">
+                    <i class="ri-instagram-line text-xl"></i>
+                  </a>
+                  <a href="#" class="w-12 h-12 rounded-full bg-gray-100 hover:bg-[#00B67A] hover:text-white flex items-center justify-center text-gray-700 hover:shadow-lg transition-all duration-300">
+                    <i class="ri-tripadvisor-line text-xl"></i>
+                  </a>
+                </div>
+                <div class="mt-6">
+                  <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                       alt="Guests enjoying drinks at the bar" 
                        class="w-full h-48 object-cover rounded-lg">
                 </div>
               </div>
             </div>
-            
-            <div class="flex items-start">
-              <div class="bg-secondary/10 p-3 rounded-full mr-4 flex-shrink-0">
-                <i class="ri-time-line text-secondary text-xl"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-lg mb-2">Opening Hours</h4>
-                <ul class="text-gray-600 space-y-2">
-                  <li class="flex justify-between max-w-xs">
-                    <span class="text-gray-700">Monday - Thursday</span>
-                    <span class="font-medium">4:00 PM - 12:00 AM</span>
-                  </li>
-                  <li class="flex justify-between max-w-xs">
-                    <span class="text-gray-700">Friday - Saturday</span>
-                    <span class="font-medium">12:00 PM - 2:00 AM</span>
-                  </li>
-                  <li class="flex justify-between max-w-xs">
-                    <span class="text-gray-700">Sunday</span>
-                    <span class="font-medium">12:00 PM - 10:00 PM</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="pt-4">
-              <h4 class="font-semibold text-lg mb-4">Follow Us</h4>
-              <div class="flex space-x-4">
-                <a href="#" class="w-12 h-12 rounded-full bg-gray-100 hover:bg-[#1877F2] hover:text-white flex items-center justify-center text-gray-700 hover:shadow-lg transition-all duration-300">
-                  <i class="ri-facebook-fill text-xl"></i>
-                </a>
-                <a href="#" class="w-12 h-12 rounded-full bg-gray-100 hover:bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] hover:text-white flex items-center justify-center text-gray-700 hover:shadow-lg transition-all duration-300">
-                  <i class="ri-instagram-line text-xl"></i>
-                </a>
-                <a href="#" class="w-12 h-12 rounded-full bg-gray-100 hover:bg-[#00B67A] hover:text-white flex items-center justify-center text-gray-700 hover:shadow-lg transition-all duration-300">
-                  <i class="ri-tripadvisor-line text-xl"></i>
-                </a>
-              </div>
-              <div class="mt-6">
-                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
-                     alt="Guests enjoying drinks at the bar" 
-                     class="w-full h-48 object-cover rounded-lg">
-              </div>
-            </div>
+          </div>
+          
+          <!-- Map -->
+          <div id="map" class="h-[500px] md:h-full rounded-2xl overflow-hidden shadow-xl border border-gray-200">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.738560706678!2d108.2446096153326!3d15.975701944444444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDU4JzMyLjUiTiAxMDjCsDE0JzQ0LjYiRQ!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy"
+              aria-label="Map showing location of Embassy Irish Bar & Grill in Da Nang, Vietnam">
+            </iframe>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+      <div class="container mx-auto px-6 text-center">
+        <a href="index.html" class="text-2xl font-serif font-bold mb-4 inline-block text-white">Embassy Irish Bar</a>
+        <p class="mb-6 max-w-2xl mx-auto">Your home away from home in Da Nang, Vietnam. Experience authentic Irish hospitality with a Vietnamese twist.</p>
         
-        <!-- Map -->
-        <div id="map" class="h-[500px] md:h-full rounded-2xl overflow-hidden shadow-xl border border-gray-200">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.738560706678!2d108.2446096153326!3d15.975701944444444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDU4JzMyLjUiTiAxMDjCsDE0JzQ0LjYiRQ!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" 
-            width="100%" 
-            height="100%" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy"
-            aria-label="Map showing location of Embassy Irish Bar & Grill in Da Nang, Vietnam">
-          </iframe>
+        <div class="flex justify-center space-x-6 mb-8">
+          <a href="#" class="text-gray-400 hover:text-secondary transition-colors duration-300">
+            <i class="ri-facebook-fill text-2xl" aria-hidden="true"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-secondary transition-colors duration-300">
+            <i class="ri-instagram-line text-2xl" aria-hidden="true"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-secondary transition-colors duration-300">
+            <i class="ri-map-pin-user-line text-2xl" aria-hidden="true"></i>
+          </a>
+        </div>
+        
+        <div class="border-t border-gray-800 pt-8 mt-8">
+          <p class="text-sm">&copy; <span id="currentYear"></span> Embassy Irish Bar. All Rights Reserved.</p>
+          <p class="text-xs mt-2 text-gray-500">93 Hoang Ke Viem, Da Nang, Vietnam</p>
         </div>
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-12">
-    <div class="container mx-auto px-6 text-center">
-      <a href="index.html" class="text-2xl font-serif font-bold mb-4 inline-block text-white">Embassy Irish Bar</a>
-      <p class="mb-6 max-w-2xl mx-auto">Your home away from home in Da Nang, Vietnam. Experience authentic Irish hospitality with a Vietnamese twist.</p>
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-secondary text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+      <i class="ri-arrow-up-line"></i>
+    </button>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
       
-      <div class="flex justify-center space-x-6 mb-8">
-        <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-secondary transition-colors duration-300">
-          <i class="ri-facebook-fill text-2xl" aria-hidden="true"></i>
-        </a>
-        <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-secondary transition-colors duration-300">
-          <i class="ri-instagram-line text-2xl" aria-hidden="true"></i>
-        </a>
-        <a href="#" aria-label="TripAdvisor" class="text-gray-400 hover:text-secondary transition-colors duration-300">
-          <i class="ri-map-pin-user-line text-2xl" aria-hidden="true"></i>
-        </a>
-      </div>
-      
-      <div class="border-t border-gray-800 pt-8 mt-8">
-        <p class="text-sm">&copy; <span id="currentYear"></span> Embassy Irish Bar. All Rights Reserved.</p>
-        <p class="text-xs mt-2 text-gray-500">93 Hoang Ke Viem, Da Nang, Vietnam</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Back to Top Button -->
-  <button id="backToTop" class="fixed bottom-6 right-6 bg-secondary text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
-    <i class="ri-arrow-up-line"></i>
-  </button>
-
-  <script>
-    // Mobile menu toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', () => {
-        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-        mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-        mobileMenu.classList.toggle('hidden');
-        
-        // Toggle between menu and close icons
-        const menuIcon = mobileMenuButton.querySelector('i');
-        if (menuIcon) {
-          menuIcon.classList.toggle('ri-menu-line');
-          menuIcon.classList.toggle('ri-close-line');
-        }
-      });
-    }
-
-    // Back to top button
-    const backToTopButton = document.getElementById('backToTop');
-    if (backToTopButton) {
-      window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-          backToTopButton.classList.remove('opacity-0', 'invisible');
-          backToTopButton.classList.add('opacity-100', 'visible');
-        } else {
-          backToTopButton.classList.add('opacity-0', 'invisible');
-          backToTopButton.classList.remove('opacity-100', 'visible');
-        }
-      });
-
-      backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+          const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+          mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.classList.toggle('hidden');
+          
+          // Toggle between menu and close icons
+          const menuIcon = mobileMenuButton.querySelector('i');
+          if (menuIcon) {
+            menuIcon.classList.toggle('ri-menu-line');
+            menuIcon.classList.toggle('ri-close-line');
+          }
         });
-      });
-    }
+      }
 
-    // Update current year in footer
-    const currentYear = document.getElementById('currentYear');
-    if (currentYear) {
-      currentYear.textContent = new Date().getFullYear();
-    }
-  </script>
-</body>
+      // Back to top button
+      const backToTopButton = document.getElementById('backToTop');
+      if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+          } else {
+            backToTopButton.classList.add('opacity-0', 'invisible');
+            backToTopButton.classList.remove('opacity-100', 'visible');
+          }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+
+      // Update current year in footer
+      const currentYear = document.getElementById('currentYear');
+      if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
 </html>

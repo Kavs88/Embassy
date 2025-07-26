@@ -76,14 +76,20 @@
 
   <!-- Gallery Header -->
   <header class="pt-32 pb-20 bg-cover bg-center" style="background-image: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
-    <div class="container mx-auto px-4 text-center text-white">
-      <h1 class="text-5xl md:text-6xl font-serif mb-4">Our Gallery</h1>
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl md:text-6xl font-serif font-bold mb-4">Our Gallery</h1>
       <p class="text-xl md:text-2xl max-w-3xl mx-auto">Step inside Embassy Irish Bar & Grill and experience our authentic Irish atmosphere, signature dishes, and vibrant events.</p>
     </div>
   </header>
 
   <!-- Gallery Filters -->
   <div class="container mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-serif font-bold mb-4">Photo Gallery</h2>
+      <div class="w-20 h-1 bg-secondary mx-auto mb-8"></div>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">Browse through our collection of images showcasing the best of Embassy Irish Bar & Grill.</p>
+    </div>
+    
     <div class="flex flex-wrap justify-center gap-4 mb-12">
       <button class="filter-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-secondary hover:border-secondary hover:text-black transition filter-active" data-filter="all">All</button>
       <button class="filter-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-secondary hover:border-secondary hover:text-black transition" data-filter="interior">Interior</button>
@@ -94,81 +100,93 @@
 
     <!-- Gallery Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Gallery Item 1 -->
-      <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" data-category="interior">
-        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-             alt="Embassy Irish Bar & Grill Interior" 
-             class="w-full h-64 object-cover cursor-pointer"
-             data-lightbox="gallery"
-             data-title="Our Cozy Interior">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg mb-2">Our Cozy Interior</h3>
-          <p class="text-gray-600 text-sm">Experience the warm, inviting atmosphere of our authentic Irish pub.</p>
+      <!-- Gallery Item 1 - Irish Pub Interior -->
+      <div class="gallery-item group bg-white rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl" data-category="interior">
+        <div class="relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Cozy Irish Pub Interior" 
+               class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <div class="text-white">
+              <h3 class="font-bold text-xl mb-1">Traditional Irish Atmosphere</h3>
+              <p class="text-gray-200 text-sm">Experience the warm, inviting atmosphere of our authentic Irish pub.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Gallery Item 2 -->
-      <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" data-category="food">
-        <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-             alt="Irish Stew" 
-             class="w-full h-64 object-cover cursor-pointer"
-             data-lightbox="gallery"
-             data-title="Traditional Irish Stew">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg mb-2">Traditional Irish Stew</h3>
-          <p class="text-gray-600 text-sm">Our signature dish made with tender lamb and fresh vegetables.</p>
+      <!-- Gallery Item 2 - Irish Stew -->
+      <div class="gallery-item group bg-white rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl" data-category="food">
+        <div class="relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1544025162-974807d9926f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Hearty Irish Stew" 
+               class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <div class="text-white">
+              <h3 class="font-bold text-xl mb-1">Hearty Irish Stew</h3>
+              <p class="text-gray-200 text-sm">Our signature dish made with tender lamb, root vegetables, and fresh herbs.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Gallery Item 3 -->
-      <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" data-category="whiskey">
-        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-             alt="Whiskey Tasting" 
-             class="w-full h-64 object-cover cursor-pointer"
-             data-lightbox="gallery"
-             data-title="Premium Irish Whiskey">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg mb-2">Premium Irish Whiskey</h3>
-          <p class="text-gray-600 text-sm">Explore our extensive collection of fine Irish whiskeys.</p>
+      <!-- Gallery Item 3 - Whiskey Tasting -->
+      <div class="gallery-item group bg-white rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl" data-category="whiskey">
+        <div class="relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1601050691145-9e4c9a5f2a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Premium Irish Whiskey Selection" 
+               class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <div class="text-white">
+              <h3 class="font-bold text-xl mb-1">Whiskey Collection</h3>
+              <p class="text-gray-200 text-sm">Discover our extensive selection of premium Irish whiskeys and spirits.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Gallery Item 4 -->
-      <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" data-category="events">
-        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-             alt="Live Music Night" 
-             class="w-full h-64 object-cover cursor-pointer"
-             data-lightbox="gallery"
-             data-title="Live Music Nights">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg mb-2">Live Music Nights</h3>
-          <p class="text-gray-600 text-sm">Enjoy traditional Irish music and local talent every weekend.</p>
+      <!-- Gallery Item 4 - Live Music -->
+      <div class="gallery-item group bg-white rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl" data-category="events">
+        <div class="relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Live Traditional Irish Music" 
+               class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <div class="text-white">
+              <h3 class="font-bold text-xl mb-1">Live Music Nights</h3>
+              <p class="text-gray-200 text-sm">Experience authentic Irish music sessions every weekend night.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Gallery Item 5 -->
-      <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" data-category="food">
-        <img src="https://images.unsplash.com/photo-1510629954389-c170b8e9b7e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-             alt="Fish and Chips" 
-             class="w-full h-64 object-cover cursor-pointer"
-             data-lightbox="gallery"
-             data-title="Classic Fish & Chips">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg mb-2">Classic Fish & Chips</h3>
-          <p class="text-gray-600 text-sm">Beer-battered cod served with hand-cut chips and mushy peas.</p>
+      <!-- Gallery Item 5 - Fish & Chips -->
+      <div class="gallery-item group bg-white rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl" data-category="food">
+        <div class="relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Classic Fish & Chips" 
+               class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <div class="text-white">
+              <h3 class="font-bold text-xl mb-1">Classic Fish & Chips</h3>
+              <p class="text-gray-200 text-sm">Beer-battered cod with hand-cut chips and homemade tartar sauce.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Gallery Item 6 -->
-      <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" data-category="interior">
-        <img src="https://images.unsplash.com/photo-1555396273-6efc5f1f66b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-             alt="Bar Area" 
-             class="w-full h-64 object-cover cursor-pointer"
-             data-lightbox="gallery"
-             data-title="Our Welcoming Bar">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg mb-2">Our Welcoming Bar</h3>
-          <p class="text-gray-600 text-sm">Pull up a stool and enjoy a perfectly poured Guinness.</p>
+      <!-- Gallery Item 6 - Bar Area -->
+      <div class="gallery-item group bg-white rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl" data-category="interior">
+        <div class="relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Irish Bar Counter" 
+               class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <div class="text-white">
+              <h3 class="font-bold text-xl mb-1">Our Welcoming Bar</h3>
+              <p class="text-gray-200 text-sm">Pull up a stool and enjoy a perfectly poured pint of Guinness.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -177,7 +195,8 @@
   <!-- Reservation CTA -->
   <section class="py-20 bg-primary text-white">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl font-serif mb-6">Ready to Experience Embassy Irish Bar & Grill?</h2>
+      <h2 class="text-4xl font-serif font-bold mb-4">Ready to Experience Embassy Irish Bar & Grill?</h2>
+      <div class="w-20 h-1 bg-secondary mx-auto mb-8"></div>
       <p class="text-xl mb-8 max-w-2xl mx-auto">Book your table today and prepare for an unforgettable evening of fine drinks, delicious food, and exceptional service.</p>
       <a href="#reservations" class="inline-block bg-secondary hover:bg-yellow-600 text-black font-semibold px-8 py-4 rounded-full transition">
         Make a Reservation
