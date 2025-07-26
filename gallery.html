@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Embassy Irish Bar & Grill</title>
+  <meta name="description" content="Step inside Embassy Irish Bar & Grill through our photo gallery. Experience our authentic Irish atmosphere, signature dishes, and vibrant events.">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0a0a0a',
+            secondary: '#b8860b',
+            dark: '#121212',
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .gallery-item {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .filter-active {
+      @apply bg-secondary text-black;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="fixed w-full bg-dark text-white z-50 shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="assets/logo.png" alt="Embassy Irish Bar & Grill" class="h-10">
+          <span class="text-xl font-semibold hidden md:block">EMBASSY IRISH BAR & GRILL</span>
+        </a>
+      </div>
+      <div class="hidden md:flex space-x-8 items-center">
+        <a href="index.html" class="hover:text-secondary transition">Home</a>
+        <a href="menu.html" class="hover:text-secondary transition">Menu</a>
+        <a href="events.html" class="hover:text-secondary transition">Events</a>
+        <a href="gallery.html" class="text-secondary font-semibold">Gallery</a>
+        <a href="contact.html" class="hover:text-secondary transition">Contact</a>
+        <a href="#reservations" class="btn-secondary px-6 py-2 rounded-full text-sm font-semibold">Reservations</a>
+      </div>
+      <button class="md:hidden text-2xl" id="mobile-menu-button">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden bg-dark pb-4 px-4" id="mobile-menu">
+      <a href="index.html" class="block py-2 hover:text-secondary transition">Home</a>
+      <a href="menu.html" class="block py-2 hover:text-secondary transition">Menu</a>
+      <a href="events.html" class="block py-2 hover:text-secondary transition">Events</a>
+      <a href="gallery.html" class="block py-2 text-secondary font-semibold">Gallery</a>
+      <a href="contact.html" class="block py-2 hover:text-secondary transition">Contact</a>
+      <a href="#reservations" class="inline-block mt-2 btn-secondary px-6 py-2 rounded-full text-sm font-semibold">Reservations</a>
+    </div>
+  </nav>
+
+  <!-- Gallery Header -->
+  <header class="pt-32 pb-20 bg-cover bg-center" style="background-image: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+    <div class="container mx-auto px-4 text-center text-white">
+      <h1 class="text-5xl md:text-6xl font-serif mb-4">Our Gallery</h1>
+      <p class="text-xl md:text-2xl max-w-3xl mx-auto">Step inside Embassy Irish Bar & Grill and experience our authentic Irish atmosphere, signature dishes, and vibrant events.</p>
+    </div>
+  </header>
+
+  <!-- Gallery Filters -->
+  <div class="container mx-auto px-4 py-12">
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <button class="filter-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-secondary hover:border-secondary hover:text-black transition filter-active" data-filter="all">All</button>
+      <button class="filter-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-secondary hover:border-secondary hover:text-black transition" data-filter="interior">Interior</button>
+      <button class="filter-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-secondary hover:border-secondary hover:text-black transition" data-filter="food">Food & Drinks</button>
+      <button class="filter-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-secondary hover:border-secondary hover:text-black transition" data-filter="events">Events</button>
+      <button class="filter-btn px-6 py-2 rounded-full border border-gray-300 hover:bg-secondary hover:border-secondary hover:text-black transition" data-filter="whiskey">Whiskey Collection</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Gallery Item 1 -->
+      <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" data-category="interior">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+             alt="Embassy Irish Bar & Grill Interior" 
+             class="w-full h-64 object-cover cursor-pointer"
+             data-lightbox="gallery"
+             data-title="Our Cozy Interior">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Our Cozy Interior</h3>
+          <p class="text-gray-600 text-sm">Experience the warm, inviting atmosphere of our authentic Irish pub.</p>
+        </div>
+      </div>
+
+      <!-- Gallery Item 2 -->
+      <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" data-category="food">
+        <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+             alt="Irish Stew" 
+             class="w-full h-64 object-cover cursor-pointer"
+             data-lightbox="gallery"
+             data-title="Traditional Irish Stew">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Traditional Irish Stew</h3>
+          <p class="text-gray-600 text-sm">Our signature dish made with tender lamb and fresh vegetables.</p>
+        </div>
+      </div>
+
+      <!-- Gallery Item 3 -->
+      <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" data-category="whiskey">
+        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+             alt="Whiskey Tasting" 
+             class="w-full h-64 object-cover cursor-pointer"
+             data-lightbox="gallery"
+             data-title="Premium Irish Whiskey">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Premium Irish Whiskey</h3>
+          <p class="text-gray-600 text-sm">Explore our extensive collection of fine Irish whiskeys.</p>
+        </div>
+      </div>
+
+      <!-- Gallery Item 4 -->
+      <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" data-category="events">
+        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+             alt="Live Music Night" 
+             class="w-full h-64 object-cover cursor-pointer"
+             data-lightbox="gallery"
+             data-title="Live Music Nights">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Live Music Nights</h3>
+          <p class="text-gray-600 text-sm">Enjoy traditional Irish music and local talent every weekend.</p>
+        </div>
+      </div>
+
+      <!-- Gallery Item 5 -->
+      <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" data-category="food">
+        <img src="https://images.unsplash.com/photo-1510629954389-c170b8e9b7e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+             alt="Fish and Chips" 
+             class="w-full h-64 object-cover cursor-pointer"
+             data-lightbox="gallery"
+             data-title="Classic Fish & Chips">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Classic Fish & Chips</h3>
+          <p class="text-gray-600 text-sm">Beer-battered cod served with hand-cut chips and mushy peas.</p>
+        </div>
+      </div>
+
+      <!-- Gallery Item 6 -->
+      <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" data-category="interior">
+        <img src="https://images.unsplash.com/photo-1555396273-6efc5f1f66b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+             alt="Bar Area" 
+             class="w-full h-64 object-cover cursor-pointer"
+             data-lightbox="gallery"
+             data-title="Our Welcoming Bar">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Our Welcoming Bar</h3>
+          <p class="text-gray-600 text-sm">Pull up a stool and enjoy a perfectly poured Guinness.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reservation CTA -->
+  <section class="py-20 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-serif mb-6">Ready to Experience Embassy Irish Bar & Grill?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Book your table today and prepare for an unforgettable evening of fine drinks, delicious food, and exceptional service.</p>
+      <a href="#reservations" class="inline-block bg-secondary hover:bg-yellow-600 text-black font-semibold px-8 py-4 rounded-full transition">
+        Make a Reservation
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <img src="assets/logo.png" alt="Embassy Irish Bar & Grill" class="h-12 mb-4">
+          <p class="text-gray-400 mb-4">Where Irish tradition meets modern hospitality. Experience the perfect blend of comfort and celebration every night at Embassy.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+            <li><a href="menu.html" class="text-gray-400 hover:text-white transition">Menu</a></li>
+            <li><a href="events.html" class="text-gray-400 hover:text-white transition">Events</a></li>
+            <li><a href="gallery.html" class="text-gray-400 hover:text-white transition">Gallery</a></li>
+            <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Opening Hours</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li class="flex justify-between"><span>Monday - Thursday</span> <span>4:00 PM - 1:00 AM</span></li>
+            <li class="flex justify-between"><span>Friday - Saturday</span> <span>12:00 PM - 2:00 AM</span></li>
+            <li class="flex justify-between"><span>Sunday</span> <span>12:00 PM - 12:00 AM</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <ul class="space-y-3 text-gray-400">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-3 text-secondary"></i>
+              <span>123 Temple Bar, Dublin 2, Ireland</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone-alt mr-3 text-secondary"></i>
+              <a href="tel:+35312345678" class="hover:text-white transition">+353 1 234 5678</a>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-envelope mr-3 text-secondary"></i>
+              <a href="mailto:info@embassyirishbarandgrill.com" class="hover:text-white transition">info@embassyirishbarandgrill.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2025 Embassy Irish Bar & Grill. All rights reserved. | <a href="#" class="hover:text-white transition">Privacy Policy</a> | <a href="#" class="hover:text-white transition">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 bg-secondary text-black w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-xl opacity-0 invisible transition-all duration-300">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4 hidden">
+    <button id="close-lightbox" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+    <div class="relative max-w-4xl w-full">
+      <img id="lightbox-img" src="" alt="" class="max-h-[80vh] w-full object-contain">
+      <div id="lightbox-caption" class="text-white text-center mt-4 text-xl"></div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Back to Top Button
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.remove('opacity-100', 'visible');
+        backToTopButton.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Gallery Filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('filter-active'));
+        button.classList.add('filter-active');
+        
+        // Filter items
+        const filterValue = button.getAttribute('data-filter');
+        
+        galleryItems.forEach(item => {
+          if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const closeLightbox = document.getElementById('close-lightbox');
+    
+    // Open lightbox when clicking on gallery images
+    document.querySelectorAll('[data-lightbox="gallery"]').forEach(img => {
+      img.addEventListener('click', (e) => {
+        lightboxImg.src = e.target.src;
+        lightboxCaption.textContent = e.target.getAttribute('data-title');
+        lightbox.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when lightbox is open
+      });
+    });
+    
+    // Close lightbox
+    function closeLightboxFunc() {
+      lightbox.classList.add('hidden');
+      document.body.style.overflow = 'auto'; // Re-enable scrolling
+    }
+    
+    closeLightbox.addEventListener('click', closeLightboxFunc);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightboxFunc();
+      }
+    });
+    
+    // Close with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+        closeLightboxFunc();
+      }
+    });
+  </script>
+</body>
+</html>

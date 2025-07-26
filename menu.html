@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - Embassy Irish Bar & Grill</title>
+  <meta name="description" content="Explore our menu at Embassy Irish Bar & Grill - A curated selection of signature cocktails, fine whiskeys, and delicious pub fare with an Irish twist.">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1a1a1a',
+            secondary: '#b8860b',
+            accent: '#8b0000',
+            light: '#f5f5f5',
+            dark: '#0a0a0a'
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background: #b8860b;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .menu-category {
+      scroll-margin-top: 100px;
+    }
+    .menu-item {
+      transition: all 0.3s ease;
+    }
+    .menu-item:hover {
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <!-- Navigation -->
+  <nav class="bg-primary text-white shadow-lg fixed w-full z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="assets/logo.png" alt="Embassy Irish Bar & Grill" class="h-12">
+          <span class="text-xl font-semibold hidden md:block">EMBASSY IRISH BAR & GRILL</span>
+        </a>
+      </div>
+      <div class="hidden md:flex space-x-8 items-center">
+        <a href="index.html" class="text-white hover:text-secondary transition">Home</a>
+        <a href="menu.html" class="text-secondary font-medium">Menu</a>
+        <a href="events.html" class="text-white hover:text-secondary transition">Events</a>
+        <a href="gallery.html" class="text-white hover:text-secondary transition">Gallery</a>
+        <a href="contact.html" class="text-white hover:text-secondary transition">Contact</a>
+        <a href="#reservations" class="btn-primary px-6 py-2 rounded-full text-sm font-semibold">Reserve</a>
+      </div>
+      <button class="md:hidden text-2xl" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden bg-dark" id="mobile-menu">
+      <div class="px-4 py-3 space-y-3">
+        <a href="index.html" class="block py-2 text-white hover:text-secondary transition">Home</a>
+        <a href="menu.html" class="block py-2 text-secondary font-medium">Menu</a>
+        <a href="events.html" class="block py-2 text-white hover:text-secondary transition">Events</a>
+        <a href="gallery.html" class="block py-2 text-white hover:text-secondary transition">Gallery</a>
+        <a href="contact.html" class="block py-2 text-white hover:text-secondary transition">Contact</a>
+        <a href="#reservations" class="btn-primary block text-center py-2 rounded-full font-semibold mt-4">Reserve a Table</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Menu Header -->
+  <header class="pt-32 pb-20 bg-cover bg-center" style="background-image: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+    <div class="container mx-auto px-4 text-center text-white">
+      <h1 class="text-5xl md:text-6xl font-serif mb-4">Our Menu</h1>
+      <p class="text-xl md:text-2xl max-w-3xl mx-auto">Experience the taste of Ireland with our carefully crafted selection of drinks and dishes, made with the finest ingredients and served with genuine Irish hospitality.</p>
+    </div>
+  </header>
+
+  <!-- Menu Navigation -->
+  <div class="bg-dark text-white sticky top-16 z-40 shadow-md">
+    <div class="container mx-auto px-4">
+      <div class="flex overflow-x-auto py-4 space-x-6 hide-scrollbar">
+        <a href="#cocktails" class="whitespace-nowrap px-4 py-2 rounded-full bg-secondary text-black font-medium">Cocktails</a>
+        <a href="#wines" class="whitespace-nowrap px-4 py-2 hover:text-secondary transition">Wines</a>
+        <a href="#spirits" class="whitespace-nowrap px-4 py-2 hover:text-secondary transition">Spirits</a>
+        <a href="#starters" class="whitespace-nowrap px-4 py-2 hover:text-secondary transition">Starters</a>
+        <a href="#mains" class="whitespace-nowrap px-4 py-2 hover:text-secondary transition">Main Courses</a>
+        <a href="#desserts" class="whitespace-nowrap px-4 py-2 hover:text-secondary transition">Desserts</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu Content -->
+  <main class="py-16">
+    <div class="container mx-auto px-4">
+      <!-- Cocktails Section -->
+      <section id="cocktails" class="menu-category mb-20">
+        <h2 class="text-4xl font-serif text-center mb-12 relative section-title">Cocktails</h2>
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <!-- Signature Cocktails -->
+          <div>
+            <h3 class="text-2xl font-serif mb-6 text-secondary border-b pb-2">Signature Cocktails</h3>
+            <div class="space-y-6">
+              <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+                <div class="flex justify-between items-start">
+                  <h4 class="text-xl font-semibold">Midnight in Paris</h4>
+                  <span class="text-secondary font-bold">$16</span>
+                </div>
+                <p class="text-gray-600 mt-1">Gin, elderflower, blackberry, lavender</p>
+              </div>
+              <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+                <div class="flex justify-between items-start">
+                  <h4 class="text-xl font-semibold">Ambassador's Reserve</h4>
+                  <span class="text-secondary font-bold">$18</span>
+                </div>
+                <p class="text-gray-600 mt-1">Whiskey, sweet vermouth, house-made bitters, orange twist</p>
+              </div>
+              <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+                <div class="flex justify-between items-start">
+                  <h4 class="text-xl font-semibold">Diplomat's Delight</h4>
+                  <span class="text-secondary font-bold">$17</span>
+                </div>
+                <p class="text-gray-600 mt-1">Vodka, passionfruit, lime, champagne</p>
+              </div>
+            </div>
+          </div>
+          <!-- Classic Cocktails -->
+          <div>
+            <h3 class="text-2xl font-serif mb-6 text-secondary border-b pb-2">Classic Cocktails</h3>
+            <div class="space-y-6">
+              <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+                <div class="flex justify-between items-start">
+                  <h4 class="text-xl font-semibold">Old Fashioned</h4>
+                  <span class="text-secondary font-bold">$15</span>
+                </div>
+                <p class="text-gray-600 mt-1">Bourbon, sugar, bitters, orange twist</p>
+              </div>
+              <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+                <div class="flex justify-between items-start">
+                  <h4 class="text-xl font-semibold">Negroni</h4>
+                  <span class="text-secondary font-bold">$16</span>
+                </div>
+                <p class="text-gray-600 mt-1">Gin, Campari, sweet vermouth, orange peel</p>
+              </div>
+              <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+                <div class="flex justify-between items-start">
+                  <h4 class="text-xl font-semibold">Espresso Martini</h4>
+                  <span class="text-secondary font-bold">$17</span>
+                </div>
+                <p class="text-gray-600 mt-1">Vodka, coffee liqueur, fresh espresso, coffee beans</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Wines Section -->
+      <section id="wines" class="menu-category mb-20">
+        <h2 class="text-4xl font-serif text-center mb-12 relative section-title">Wine Selection</h2>
+        <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <!-- Red Wines -->
+          <div>
+            <h3 class="text-2xl font-serif mb-6 text-secondary border-b pb-2">Red Wines</h3>
+            <div class="space-y-6">
+              <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+                <div class="flex justify-between items-start">
+                  <h4 class="text-xl font-semibold">House Red Blend</h4>
+                  <span class="text-secondary font-bold">$12/glass</span>
+                </div>
+                <p class="text-gray-600 mt-1">Smooth and balanced with dark fruit notes</p>
+                <p class="text-sm text-gray-500 mt-2">Bottle: $48</p>
+              </div>
+              <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+                <div class="flex justify-between items-start">
+                  <h4 class="text-xl font-semibold">Cabernet Sauvignon</h4>
+                  <span class="text-secondary font-bold">$16/glass</span>
+                </div>
+                <p class="text-gray-600 mt-1">Full-bodied with blackcurrant and oak</p>
+                <p class="text-sm text-gray-500 mt-2">Bottle: $64</p>
+              </div>
+            </div>
+          </div>
+          <!-- White Wines -->
+          <div>
+            <h3 class="text-2xl font-serif mb-6 text-secondary border-b pb-2">White Wines</h3>
+            <div class="space-y-6">
+              <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+                <div class="flex justify-between items-start">
+                  <h4 class="text-xl font-semibold">Sauvignon Blanc</h4>
+                  <span class="text-secondary font-bold">$14/glass</span>
+                </div>
+                <p class="text-gray-600 mt-1">Crisp with citrus and tropical fruit</p>
+                <p class="text-sm text-gray-500 mt-2">Bottle: $56</p>
+              </div>
+              <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+                <div class="flex justify-between items-start">
+                  <h4 class="text-xl font-semibold">Chardonnay</h4>
+                  <span class="text-secondary font-bold">$15/glass</span>
+                </div>
+                <p class="text-gray-600 mt-1">Buttery with vanilla and oak notes</p>
+                <p class="text-sm text-gray-500 mt-2">Bottle: $60</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Food Menu Sections (Starters, Mains, Desserts) -->
+      <section id="starters" class="menu-category mb-20">
+        <h2 class="text-4xl font-serif text-center mb-12 relative section-title">Starters</h2>
+        <div class="max-w-3xl mx-auto">
+          <div class="space-y-6">
+            <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+              <div class="flex justify-between items-start">
+                <h4 class="text-xl font-semibold">Truffle Arancini</h4>
+                <span class="text-secondary font-bold">$14</span>
+              </div>
+              <p class="text-gray-600 mt-1">Crispy risotto balls with black truffle and mozzarella, served with truffle aioli</p>
+            </div>
+            <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+              <div class="flex justify-between items-start">
+                <h4 class="text-xl font-semibold">Beef Tartare</h4>
+                <span class="text-secondary font-bold">$18</span>
+              </div>
+              <p class="text-gray-600 mt-1">Hand-cut beef tenderloin, capers, shallots, quail egg, truffle oil, grilled sourdough</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="mains" class="menu-category mb-20">
+        <h2 class="text-4xl font-serif text-center mb-12 relative section-title">Main Courses</h2>
+        <div class="max-w-3xl mx-auto">
+          <div class="space-y-6">
+            <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+              <div class="flex justify-between items-start">
+                <h4 class="text-xl font-semibold">Filet Mignon</h4>
+                <span class="text-secondary font-bold">$42</span>
+              </div>
+              <p class="text-gray-600 mt-1">8oz grass-fed beef, truffle mashed potatoes, seasonal vegetables, red wine reduction</p>
+            </div>
+            <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+              <div class="flex justify-between items-start">
+                <h4 class="text-xl font-semibold">Pan-Seared Salmon</h4>
+                <span class="text-secondary font-bold">$32</span>
+              </div>
+              <p class="text-gray-600 mt-1">Atlantic salmon, lemon beurre blanc, asparagus, wild rice pilaf</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="desserts" class="menu-category">
+        <h2 class="text-4xl font-serif text-center mb-12 relative section-title">Desserts</h2>
+        <div class="max-w-3xl mx-auto">
+          <div class="space-y-6">
+            <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+              <div class="flex justify-between items-start">
+                <h4 class="text-xl font-semibold">Chocolate Fondant</h4>
+                <span class="text-secondary font-bold">$12</span>
+              </div>
+              <p class="text-gray-600 mt-1">Warm chocolate cake with a molten center, vanilla bean ice cream</p>
+            </div>
+            <div class="menu-item bg-white p-6 rounded-lg shadow-sm">
+              <div class="flex justify-between items-start">
+                <h4 class="text-xl font-semibold">Crème Brûlée</h4>
+                <span class="text-secondary font-bold">$10</span>
+              </div>
+              <p class="text-gray-600 mt-1">Classic vanilla bean custard with caramelized sugar crust, fresh berries</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <img src="assets/logo.png" alt="Embassy Irish Bar & Grill" class="h-12 mb-4">
+          <p class="text-gray-400 mb-4">Where Irish tradition meets modern hospitality. Experience the perfect blend of comfort and celebration every night at Embassy.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+            <li><a href="menu.html" class="text-gray-400 hover:text-white transition">Menu</a></li>
+            <li><a href="events.html" class="text-gray-400 hover:text-white transition">Events</a></li>
+            <li><a href="gallery.html" class="text-gray-400 hover:text-white transition">Gallery</a></li>
+            <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Opening Hours</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li class="flex justify-between"><span>Monday - Thursday</span> <span>4:00 PM - 12:00 AM</span></li>
+            <li class="flex justify-between"><span>Friday - Saturday</span> <span>12:00 PM - 2:00 AM</span></li>
+            <li class="flex justify-between"><span>Sunday</span> <span>12:00 PM - 10:00 PM</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-3 text-secondary"></i>
+              <span>123 Embassy Street<br>City Center, 10101</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone-alt mr-3 text-secondary"></i>
+              <a href="tel:+1234567890" class="hover:text-white transition">+1 (234) 567-890</a>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-envelope mr-3 text-secondary"></i>
+              <a href="mailto:info@embassyfriday.com" class="hover:text-white transition">info@embassyfriday.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2025 Embassy Irish Bar & Grill. All rights reserved. | <a href="#" class="hover:text-white transition">Privacy Policy</a> | <a href="#" class="hover:text-white transition">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 bg-secondary text-black w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Smooth scrolling for menu navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Back to top button
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.remove('opacity-100', 'visible');
+        backToTopButton.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
